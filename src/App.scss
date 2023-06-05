@@ -1,0 +1,20 @@
+@import './variables';
+
+main {
+  width: 100%;
+  color: $whiteColor;
+  padding: 40px;
+}
+
+.colorPickerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.colorSection {
+  border: 2px solid $whiteColor;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  margin-right: 40px;
+}
