@@ -28,9 +28,6 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
   }, [setHoveredColor]);
 
   const isActive = useCallback((color: string) => {
-    console.log('hoveredColor', hoveredColor);
-    console.log('checkedColor', checkedColor);
-    console.log('color', color);
     if (hoveredColor) {
       return hoveredColor === color;
     } else {
