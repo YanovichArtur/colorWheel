@@ -32,6 +32,7 @@
       transform-origin: bottom left;
       width: 50%;
       height: 50%;
+      -webkit-tap-highlight-color: transparent;
       cursor: pointer;
     }
     & .colorWheelItemSingle {
@@ -42,6 +43,7 @@
       transform-origin: bottom left;
       width: 100%;
       height: 100%;
+      -webkit-tap-highlight-color: transparent;
       cursor: pointer;
     }
     & .colorWheelItemDouble {
@@ -52,6 +54,7 @@
       transform-origin: bottom;
       width: 100%;
       height: 50%;
+      -webkit-tap-highlight-color: transparent;
       cursor: pointer;
     }
     & .colorWheelItemTriple {
@@ -62,6 +65,7 @@
       transform-origin: bottom left;
       width: 60%;
       height: 60%;
+      -webkit-tap-highlight-color: transparent;
       cursor: pointer;
     }
     & .colorWheelItem.active,

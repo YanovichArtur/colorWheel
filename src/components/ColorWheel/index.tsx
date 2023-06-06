@@ -11,20 +11,23 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
   const [hoveredColor, setHoveredColor] = useState<string>('');
   const [checkedColor, setCheckedColor] = useState<string>('');
 
-  const onClickColorHandler = useCallback((event: MouseEvent) => {
-    const target = event.target as HTMLDivElement;
-    colorChangeHandler(target.id);
-    setCheckedColor(target.id);
+  const onClickColorHandler = useCallback((color: string) => {
+    return () => {
+      colorChangeHandler(color);
+      setCheckedColor(color);
+    }
   }, [colorChangeHandler, setCheckedColor]);
 
-  const onMouseEnterColorHandler = useCallback((event: MouseEvent) => {
-    const target = event.target as HTMLDivElement;
-    setHoveredColor(target.id);
+  const onMouseEnterColorHandler = useCallback((color: string) => {
+    return () => {
+      setHoveredColor(color);
+    }
   }, [colorChangeHandler]);
 
-  const onMouseLeaveColorHandler = useCallback((event: MouseEvent) => {
-    const target = event.target as HTMLDivElement;
-    setHoveredColor('');
+  const onMouseLeaveColorHandler = useCallback(() => {
+    return () => {
+      setHoveredColor('');
+    }
   }, [setHoveredColor]);
 
   const isActive = useCallback((color: string) => {
@@ -39,8 +42,9 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
     if (colors.length === 1) {
       return (
         <div
-          onMouseEnter={onMouseEnterColorHandler}
-          onMouseLeave={onMouseLeaveColorHandler}
+          onClick={onClickColorHandler(colors[0])}
+          onMouseEnter={onMouseEnterColorHandler(colors[0])}
+          onMouseLeave={onMouseLeaveColorHandler()}
           className={`colorWheelItemSingle ${isActive(colors[0]) ? 'active' : ''}`}
           id={colors[0]}
           style={{backgroundColor: colors[0]}}>
@@ -50,8 +54,9 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
       return colors.map((color, index) => {
         return (
           <div
-            onMouseEnter={onMouseEnterColorHandler}
-            onMouseLeave={onMouseLeaveColorHandler}
+            onClick={onClickColorHandler(color)}
+            onMouseEnter={onMouseEnterColorHandler(color)}
+            onMouseLeave={onMouseLeaveColorHandler()}
             className={`colorWheelItemDouble ${isActive(color) ? 'active' : ''}`}
             key={color}
             id={color}
@@ -63,8 +68,9 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
       return colors.map((color, index) => {
         return (
           <div
-            onMouseEnter={onMouseEnterColorHandler}
-            onMouseLeave={onMouseLeaveColorHandler}
+            onClick={onClickColorHandler(color)}
+            onMouseEnter={onMouseEnterColorHandler(color)}
+            onMouseLeave={onMouseLeaveColorHandler()}
             className={`colorWheelItemTriple ${isActive(color) ? 'active' : ''}`}
             key={color}
             id={color}
@@ -76,8 +82,9 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
       return colors.map((color, index) => {
         return (
           <div
-            onMouseEnter={onMouseEnterColorHandler}
-            onMouseLeave={onMouseLeaveColorHandler} 
+            onClick={onClickColorHandler(color)}
+            onMouseEnter={onMouseEnterColorHandler(color)}
+            onMouseLeave={onMouseLeaveColorHandler()} 
             className={`colorWheelItem ${isActive(color) ? 'active' : ''}`}
             key={color}
             id={color}
@@ -95,7 +102,7 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
         {caption}
       </div>
       {colors && colors.length ? (
-        <div className="colorWheelExternalDiv" onClick={onClickColorHandler}>
+        <div className="colorWheelExternalDiv">
           {renderColors}
           <div className="borderShapeDiv"></div>
           <div className="centerShapeDiv"></div>

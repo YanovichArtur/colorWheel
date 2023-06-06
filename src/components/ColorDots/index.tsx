@@ -10,21 +10,22 @@ type ColorDotsProps = {
 export const ColorDots: React.FC<ColorDotsProps> = ({ caption, colors, colorChangeHandler }) => {
   const [checkedColor, setCheckedColor] = useState<string>('');
 
-  const onClickColorHandler = useCallback((event: MouseEvent) => {
-    const target = event.target as HTMLDivElement;
-    colorChangeHandler(target.id);
-    setCheckedColor(target.id);
+  const onClickColorHandler = useCallback((color: string) => {
+    return () => {
+      colorChangeHandler(color);
+      setCheckedColor(color);
+    }
   }, [colorChangeHandler, setCheckedColor]);
 
   return (
-    <div className="colorDotsMainContainer" onClick={onClickColorHandler}>
+    <div className="colorDotsMainContainer">
       <div className="colorWheelCaption">
         {caption}
       </div>
       <div className="colorDotsContainer">
         {colors.map((color) => {
           return (
-            <div key={color} className={`colorDotItemContainer ${checkedColor === color ? 'active' : ''}`}>
+            <div key={color} className={`colorDotItemContainer ${checkedColor === color ? 'active' : ''}`} onClick={onClickColorHandler(color)} >
               <div id={color} className="colorDotItem" style={{backgroundColor: color}}></div>
             </div>
           );
