@@ -11,9 +11,16 @@
 - Go to the project folder and run ```npm install``` to install all dependencies
 - Run ```npm run build``` to build the project
 
+## Running tests
+- Install [Node.js v16 or newer and npm v8 or newer](https://nodejs.org/en)
+- Go to the project folder and run ```npm install``` to install all dependencies
+- Run ```npm run test``` to run tests
+
 ## Tech
 Libraries used in the project:
 - TypeScript
 - ReactJS
 - SCSS
 - Webpack
+- jest
+- testing-library

@@ -3,18 +3,23 @@
 main {
   width: 100%;
   color: $whiteColor;
-  padding: 40px;
 }
 
 .colorPickerContainer {
   display: flex;
   align-items: center;
-}
-
-.colorSection {
-  border: 2px solid $whiteColor;
-  border-radius: 20px;
-  width: 100px;
-  height: 100px;
-  margin-right: 40px;
+  padding: 20px;
+  & .colorSection {
+    border: 2px solid $whiteColor;
+    border-radius: 20px;
+    min-width: 300px;
+    min-height: 300px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+  }
+  &.vertical {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }

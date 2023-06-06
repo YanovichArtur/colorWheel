@@ -90,12 +90,12 @@ export const ColorWheel: React.FC<ColorWheelProps> = ( {caption, colors, colorCh
   }, [colors, hoveredColor, checkedColor]);
 
   return (
-    <div>
+    <div className="colorWheelMainContainer">
       <div className="colorWheelCaption">
         {caption}
       </div>
       {colors && colors.length ? (
-        <div className="colorWheelEternalDiv" onClick={onClickColorHandler}>
+        <div className="colorWheelExternalDiv" onClick={onClickColorHandler}>
           {renderColors}
           <div className="borderShapeDiv"></div>
           <div className="centerShapeDiv"></div>

@@ -1,0 +1,35 @@
+@import '../../variables';
+
+.colorDotsMainContainer {
+  & .colorWheelCaption {
+    font-size: 32px;
+    color: $whiteColor;
+    display: flex;
+    justify-content: center;
+  }
+  & .colorDotsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    & > div:not(:last-of-type) {
+      margin-right: 4px;
+    }
+    & .colorDotItemContainer {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.active {
+        border: 1px solid $colorDotsBorderColor;
+        cursor: default;
+      }
+      & .colorDotItem {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
